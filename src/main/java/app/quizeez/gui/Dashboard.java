@@ -1,10 +1,13 @@
 package app.quizeez.gui;
 
-import app.quizeez.component.form.Form;
+import app.quizeez.component.form.PlayOnline;
 import app.quizeez.component.menu.Menu;
 import app.quizeez.component.titlebar.TitleBar;
-import app.quizeez.system.Colors;
 import app.quizeez.component.header.Header;
+import app.quizeez.modal.Account;
+import app.quizeez.material.panel.RoundedPanel;
+import app.quizeez.system.SVGIcon;
+import app.quizeez.view.page.Home;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -22,17 +25,17 @@ public class Dashboard extends JFrame {
     private final Dimension minimized = new Dimension(720, 480);
     private final Dimension fullscreen
             = Toolkit.getDefaultToolkit().getScreenSize();
+    private Animator showingAnimation, open, close;
 
     private final TitleBar titleBar;
     private final Menu menu;
-    private final JPanel main;
+    private final RoundedPanel main;
     private final Header header;
     private final MigLayout miglayout;
 
-    private Animator animator;
     private boolean menuShow = true;
 
-    public Dashboard() {
+    private Dashboard() {
         initComponents();
         titleBar = new TitleBar();
         menu = new Menu();
@@ -40,10 +43,23 @@ public class Dashboard extends JFrame {
         miglayout = new MigLayout("fill, inset 0",
                 "0[]0[]0",
                 "0[fill]0");
-        main = new JPanel(new BorderLayout(0, 0));
+        main = new RoundedPanel();
+        main.setLayout(new BorderLayout(0, 0));
 
         setContentPane(roundedBackground);
         init();
+    }
+
+    public Dashboard(boolean login) {
+        this();
+        if (login) {
+            reset();
+        }
+    }
+
+    private void reset() {
+        header.resetProfile(false);
+        // change profile and popup header menu
     }
 
     private void init() {
@@ -61,14 +77,17 @@ public class Dashboard extends JFrame {
         titleBar.initEvent(this, roundedBackground);
 
         menu.setShowingAction((ActionEvent e) -> {
-            if (!animator.isRunning()) {
-                animator.start();
+            if (!showingAnimation.isRunning()) {
+                showingAnimation.start();
             }
         });
+        menu.setShow(!menuShow);
 
         main.setOpaque(false);
+        main.setBackground(new Color(0, 0, 0, 0));
         main.add(header, BorderLayout.NORTH);
         showingButtonAnimation();
+        showPage(new Home());
     }
 
     public void showingButtonAnimation() {
@@ -85,6 +104,7 @@ public class Dashboard extends JFrame {
                 }
                 miglayout.setComponentConstraints(menu, "w " + width + "!");
                 roundedBackground.revalidate();
+                menu.setShow(menuShow);
             }
 
             @Override
@@ -92,10 +112,10 @@ public class Dashboard extends JFrame {
                 menuShow = !menuShow;
             }
         };
-        animator = new Animator(400, target);
-        animator.setResolution(0);
-        animator.setAcceleration(0.5f);
-        animator.setDeceleration(0.5f);
+        showingAnimation = new Animator(400, target);
+        showingAnimation.setResolution(0);
+        showingAnimation.setAcceleration(0.5f);
+        showingAnimation.setDeceleration(0.5f);
     }
 
     @SuppressWarnings("unchecked")
@@ -107,7 +127,6 @@ public class Dashboard extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(minimized);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1080, 720));
 
         roundedBackground.setMaximumSize(fullscreen);
         roundedBackground.setMinimumSize(minimized);
@@ -144,27 +163,59 @@ public class Dashboard extends JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void makeAnimation() {
-        Animator animation = new Animator(1000, new TimingTargetAdapter() {
+        open = new Animator(800, new TimingTargetAdapter() {
+            @Override
+            public void begin() {
+                super.begin();
+                setOpacity(0.0f);
+            }
+
             @Override
             public void timingEvent(float fraction) {
+                super.timingEvent(fraction);
                 setOpacity(fraction);
+            }
+
+            @Override
+            public void end() {
+                super.end();
+                setOpacity(1.0f);
             }
         });
 
-        animation.setResolution(0);
-        animation.setAcceleration(0.5f);
-        animation.setDeceleration(0.5f);
-        if (!animation.isRunning()) {
-            animation.start();
-        }
+        open.setResolution(0);
+        open.setAcceleration(0.5f);
+        open.setDeceleration(0.5f);
+
+        close = new Animator(800, new TimingTargetAdapter() {
+            float fr = 1f;
+
+            @Override
+            public void timingEvent(float fraction) {
+                super.timingEvent(fraction);
+                setOpacity(fr - fraction);
+            }
+        });
+        close.setResolution(1);
+        close.setAcceleration(0.5f);
+        close.setDeceleration(0.5f);
     }
 
-    public void show(Form form) {
+    public void showPage(JPanel form) {
         main.removeAll();
-        main.add(form);
+        main.add(header, BorderLayout.NORTH);
+        main.add(form, BorderLayout.CENTER);
     }
-    
-    public Menu getMenu () {
-        return menu;
+
+    @Override
+    public void setVisible(boolean b) {
+        if (!b && !close.isRunning()) {
+            close.start();
+            return;
+        }
+        super.setVisible(b);
+        if (b && !open.isRunning()) {
+            open.start();
+        }
     }
 }

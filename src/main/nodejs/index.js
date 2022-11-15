@@ -7,7 +7,6 @@ const io = new Server(server);
 const PORT = 3000;
 
 app.get('/', (req, res) => {
-    res.write('<h1>Hello world</h1>');
     res.end();
 });
 

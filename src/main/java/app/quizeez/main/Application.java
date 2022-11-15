@@ -1,24 +1,29 @@
 package app.quizeez.main;
 
 import app.quizeez.gui.Dashboard;
-import app.quizeez.gui.SplashScreen;
-import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
-import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
-import javax.swing.SwingUtilities;
+import com.groupdocs.conversion.internal.c.f.j.db.util.Converter;
+import com.groupdocs.foundation.domain.FileType;
 
 public class Application {
 
     public static void main(String[] args) {
-        FlatCyanLightIJTheme.setup();
-        dashBoard = new Dashboard();
-        SwingUtilities.invokeLater(() -> {
-            new SplashScreen(null, true).setVisible(true);
-        });
+
+//        FlatIntelliJLaf.setup();
+//
+//        dashBoard = new Dashboard(false);
+//        SwingUtilities.invokeLater(() -> {
+//            new SplashScreen(null, false).setVisible(true);
+//        });
+        
     }
 
     private static Dashboard dashBoard;
 
     public static Dashboard getDashBoard() {
         return dashBoard;
+    }
+
+    public static void setDashboard(Dashboard d) {
+        dashBoard = d;
     }
 }

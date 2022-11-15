@@ -1,4 +1,4 @@
-package app.quizeez.material.button;
+package app.quizeez.util;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;

@@ -34,5 +34,7 @@ public class RoundedPanel extends JPanel {
 
     public void setCorner(int corner) {
         this.corner = corner;
+        revalidate();
+        repaint();
     }
 }

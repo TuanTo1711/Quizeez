@@ -1,4 +1,4 @@
-package app.quizeez.material.button;
+package app.quizeez.event;
 
 public abstract class SwitchAdapter implements SwitchListener {
 

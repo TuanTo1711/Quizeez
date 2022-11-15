@@ -31,7 +31,7 @@ import org.jdesktop.animation.timing.interpolation.PropertySetter;
 
 public class Menu extends JPanel {
 
-    private final List<MenuEvent> events = new ArrayList<>();
+    private final List<MenuEvent> menuEvents = new ArrayList<>();
     private int targetLocation;
     private TimingTarget target;
     private int selectedIndex = 1;
@@ -41,7 +41,6 @@ public class Menu extends JPanel {
     private MigLayout layout;
     private HomeButton homeBtn;
     private JPanel menu_panel;
-    private ProfileBottom profile;
     private JButton cmdShowing;
 
     public Menu() {
@@ -69,7 +68,7 @@ public class Menu extends JPanel {
     private void init() {
         setLayout(new MigLayout("wrap, fillx, insets 0",
                 "[fill]", "0[]0"));
-        layout = new MigLayout("fillx, wrap",
+        layout = new MigLayout("fill, wrap",
                 "0[fill]0", "0[fill]0");
 
         menu_panel = new JPanel();
@@ -81,14 +80,15 @@ public class Menu extends JPanel {
 
         initMenu();
         space();
-        createProfile();
         setAnimation();
     }
 
     private void createShowingButton() {
-        SVGIcon.Showing_Menu.setColorFilter(
+        SVGIcon.SHOW_MENU.setColorFilter(
                 SVGIcon.setColor(Colors.FG_MENU_SHOWING));
-        cmdShowing = new JButton(SVGIcon.Showing_Menu);
+        SVGIcon.HIDE_MENU.setColorFilter(
+                SVGIcon.setColor(Colors.FG_MENU_SHOWING));
+        cmdShowing = new JButton();
         cmdShowing.setContentAreaFilled(false);
         cmdShowing.setCursor(new Cursor(Cursor.HAND_CURSOR));
         cmdShowing.setBorder(new EmptyBorder(25, 15, 15, 30));
@@ -96,7 +96,7 @@ public class Menu extends JPanel {
         add(cmdShowing, "pos 1al 0al 80 60");
     }
 
-    public void setAnimation() {
+    private void setAnimation() {
         animator = new Animator(300);
         animator.addTarget(new TimingTargetAdapter() {
             @Override
@@ -111,16 +111,14 @@ public class Menu extends JPanel {
     }
 
     private void initMenu() {
-        split("Home");
-        addMenuItem("Dashboard", SVGIcon.Home_Item_Menu, 1);
-        addMenuItem("Trends", SVGIcon.Trends_Item_Menu, 2);
-        addMenuItem("Newsfeed", SVGIcon.NewsFeed_Item_Menu, 3);
-        split("Test");
-        addMenuItem("New & Notes", SVGIcon.NewAndNote_Item_Menu, 5);
-        addMenuItem("Calendar", SVGIcon.Calendar_Item_Menu, 6);
-        addMenuItem("Event", SVGIcon.Event_Item_Menu, 7);
-        split("Playing");
-        addMenuItem("Favorite", SVGIcon.Favorite_Item_Menu, 9);
+        split("Explore");
+        addMenuItem("Home", SVGIcon.HOME, 1);
+        addMenuItem("Collection", SVGIcon.COLLECTION, 2);
+        split("Online");
+        addMenuItem("Play Quiz", SVGIcon.QUIZ_GAME, 4);
+        split("Offline");
+        addMenuItem("Practice", SVGIcon.LEARNING, 6);
+        addMenuItem("Flashcard", SVGIcon.QUIZ_GAME, 7);
         this.add(menu_panel);
     }
 
@@ -154,7 +152,7 @@ public class Menu extends JPanel {
             }
         });
 
-        menu_panel.add(item, "w 150!");
+        menu_panel.add(item);
     }
 
     private void space() {
@@ -178,13 +176,17 @@ public class Menu extends JPanel {
     }
 
     private void runEvent() {
-        for (MenuEvent event : events) {
+        for (MenuEvent event : menuEvents) {
             event.selectedItem(selectedIndex);
         }
     }
 
     public void setShowingAction(ActionListener action) {
         cmdShowing.addActionListener(action);
+    }
+
+    public void setShow(boolean show) {
+        cmdShowing.setIcon(show ? SVGIcon.SHOW_MENU : SVGIcon.HIDE_MENU);
     }
 
     public int getSelectedLocation() {
@@ -197,7 +199,7 @@ public class Menu extends JPanel {
     }
 
     public void addEventMenu(MenuEvent event) {
-        this.events.add(event);
+        this.menuEvents.add(event);
     }
 
     public void setAlpha(float alpha) {
@@ -231,13 +233,6 @@ public class Menu extends JPanel {
         this.add(homeBtn);
     }
 
-    private void createProfile() {
-        FlatSVGIcon userAvatar = new FlatSVGIcon("svg/setting-profile_bottom.svg",
-                50, 50);
-        profile = new ProfileBottom(userAvatar, "To Hoang Tuan");
-        this.add(profile, "h 60!");
-    }
-
     private class HomeButton extends JButton {
 
         private final String[] values = new String[]{"Bee", "Quiz"};
@@ -267,7 +262,6 @@ public class Menu extends JPanel {
             g2.setColor(UIManager.getColor("Button.focusedBorderColor"));
             g2.drawString(values[1], 78, getHeight() / 2 + 15);
 
-            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
             super.paintComponent(g);
         }
 
@@ -277,71 +271,7 @@ public class Menu extends JPanel {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
             super.paint(grphcs);
         }
-
     }
-
-    private class ProfileBottom extends JPanel {
-
-        private ImageIcon img;
-        private String nameUser;
-
-        public ProfileBottom(ImageIcon img, String nameUser) {
-            this.img = img;
-            this.nameUser = nameUser;
-            setOpaque(false);
-            setLayout(new MigLayout("fill, inset 0",
-                    "15[]0[]0", "0[]0"));
-
-            JLabel profile = new JLabel();
-
-            profile.setText(nameUser);
-            profile.setIcon(img);
-            profile.setFont(getFont().deriveFont(Font.BOLD, 15));
-            profile.setIconTextGap(15);
-            profile.setHorizontalAlignment(JLabel.LEFT);
-
-            SVGIcon.Chevron_right.setColorFilter(
-                    SVGIcon.setColor(Colors.FG_PROFILE_MORE_ICON));
-            JButton moreBtn = new JButton(SVGIcon.Chevron_right);
-            moreBtn.setContentAreaFilled(false);
-            moreBtn.setOpaque(false);
-            moreBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            moreBtn.setBorder(new EmptyBorder(0, 0, 0, 15));
-            add(profile, "w 150!");
-            add(moreBtn, "east, w 25!, h 25!");
-            revalidate();
-            repaint();
-        }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            Graphics2D g2 = (Graphics2D) g;
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
-
-            g2.setColor(Colors.FG_PROFILE_SPLIT);
-            g2.drawLine(0, 0, this.getWidth(), 0);
-
-            super.paintComponent(g);
-        }
-
-        public ImageIcon getImg() {
-            return img;
-        }
-
-        public void setImg(ImageIcon img) {
-            this.img = img;
-        }
-
-        public String getNameUser() {
-            return nameUser;
-        }
-
-        public void setNameUser(String nameUser) {
-            this.nameUser = nameUser;
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,4 @@
-package app.quizeez.material.button;
+package app.quizeez.event;
 
 public interface SwitchListener {
 
