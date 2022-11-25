@@ -10,7 +10,7 @@ public class Colors {
     // FG = Foreground
     public static Color BG_LOGO = UIManager.getColor(FlatIconColors.ACTIONS_YELLOW.key);
     public static Color BG_LOGO_NAME = UIManager.getColor(FlatIconColors.ACTIONS_YELLOW.key);
-    public static Color BG_LOGO_SUBNAME = UIManager.getColor("Button.focusedBorderColor");
+//    public static Color BG_LOGO_SUBNAME = UIManager.getColor("Button.focusedBorderColor");
 
     public static Color FG_MENU_ITEM = UIManager.getColor("Button.Foreground");
     public static Color FG_MENU_SPLITER = UIManager.getColor(FlatIconColors.ACTIONS_GREY.key);

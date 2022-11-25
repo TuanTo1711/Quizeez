@@ -4,7 +4,7 @@ import app.quizeez.dialog.verify.VerifyPanel;
 import app.quizeez.dialog.notification.Notification;
 import app.quizeez.modal.Account;
 import app.quizeez.entity.User;
-import app.quizeez.entity.service.MailService;
+import app.quizeez.util.MailUtils;
 import app.quizeez.entity.service.UserService;
 import app.quizeez.view.form.Detail;
 import app.quizeez.view.form.LaRForm;
@@ -231,7 +231,7 @@ public class Login extends JFrame {
             public void end() {
                 super.end();
                 dispose();
-                Application.getDashBoard().setVisible(true);
+                Application.getInstance().setVisible(true);
             }
         });
 
@@ -292,11 +292,11 @@ public class Login extends JFrame {
 
         if (data.getPassword().equalsIgnoreCase(Account.password)) {
             this.dispose();
-            Application.getDashBoard().dispose();
-            Application.setDashboard(new Dashboard(true));
-            Application.getDashBoard().setVisible(true);
+            Application.getInstance().dispose();
+            Application.setInstance(new Dashboard(true));
+            Application.getInstance().setVisible(true);
             new Notification(
-                    Application.getDashBoard(),
+                    Application.getInstance(),
                     Notification.Type.SUCCESS,
                     Notification.Location.TOP_CENTER,
                     "Login Successfully!"
@@ -314,7 +314,7 @@ public class Login extends JFrame {
     private void sendMail(String toEmail, String code) {
         new Thread(() -> {
             loading.setVisible(true);
-            NotificationModal ms = MailService.sendMail(toEmail, code);
+            NotificationModal ms = MailUtils.sendMail(toEmail, code);
             if (ms.isSuccess()) {
                 loading.setVisible(false);
                 verifyCode.setVisible(true);

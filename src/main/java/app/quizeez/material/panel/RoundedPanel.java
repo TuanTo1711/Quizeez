@@ -17,6 +17,8 @@ public class RoundedPanel extends JPanel {
     public RoundedPanel(int corner) {
         this();
         this.corner = corner;
+        revalidate();
+        repaint();
     }
 
     @Override

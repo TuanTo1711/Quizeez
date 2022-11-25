@@ -34,7 +34,7 @@ public class UserService implements Service<User> {
         Random ran = new Random();
         return df.format(ran.nextInt(10000));
     }
-
+    
     @Override
     public List<User> select(String query, Object... args) {
         List<User> list = new ArrayList<>();
@@ -67,17 +67,10 @@ public class UserService implements Service<User> {
     @Override
     public void insert(User modal) {
         final String insertQuery = "INSERT INTO [dbo].[USER]"
-                + "([USERNAME],[PASSWORD],[EMAIL],[FULLNAME],[STATUS])"
                 + "VALUES(?,?,?,?,?)";
 
         try {
-            connector.executeUpdate(insertQuery,
-                    modal.getUsername(),
-                    modal.getPassword(),
-                    modal.getEmail(),
-                    modal.getFullname(),
-                    modal.getStatus()
-            );
+            connector.executeUpdate(insertQuery, modal.toInsertData());
         } catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName())
                     .log(Level.SEVERE, null, ex);
@@ -86,9 +79,27 @@ public class UserService implements Service<User> {
 
     @Override
     public void delete(User modal) {
+        final String query = "DELETE FROM [dbo].[USER] where ID = ?, [USERNAME] = ?";
+        try {
+
+            connector.executeUpdate(query, modal.toDeleteData());
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void update(User modal) {
+        final String query = "update [USER] "
+                + "set [USERNAME] = ?, [_PASSWORD] = ?, [EMAIL] = ?, [FULLNAME] = ?, [GENDER] = ?"
+                + "where ID = ?";
+        try {
+
+            connector.executeUpdate(query, modal.toUpdateData());
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
     }
 }

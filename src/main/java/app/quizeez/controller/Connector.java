@@ -8,9 +8,9 @@ import java.util.logging.Logger;
 public final class Connector {
 
     public final Connection connection
-            = new ConnectionUtils("sa", "123456", "QUIZEEZ")
+            = new ConnectionUtils("sa", "123456", "QUIZBEE")
                     .openConnection();
-
+                    
     public PreparedStatement prepareStatement(String query, Object... args)
             throws SQLException {
         PreparedStatement pstmt;

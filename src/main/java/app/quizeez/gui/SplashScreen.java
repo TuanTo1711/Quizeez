@@ -78,7 +78,7 @@ public class SplashScreen extends javax.swing.JDialog {
                 if (progressBar1.getValue() >= 100) {
                     ((Timer) e.getSource()).stop();
                     dispose();
-                    Application.getDashBoard().setVisible(true);
+                    Application.getInstance().setVisible(true);
                 }
             }
         });

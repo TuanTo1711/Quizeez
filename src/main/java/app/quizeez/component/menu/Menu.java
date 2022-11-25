@@ -45,7 +45,6 @@ public class Menu extends JPanel {
 
     public Menu() {
         initComponents();
-        setOpaque(false);
         init();
     }
 
@@ -71,10 +70,9 @@ public class Menu extends JPanel {
         layout = new MigLayout("fill, wrap",
                 "0[fill]0", "0[fill]0");
 
-        menu_panel = new JPanel();
+        menu_panel = new JPanel(layout);
         menu_panel.setOpaque(false);
-        menu_panel.setLayout(layout);
-
+        
         createShowingButton();
         createHomeButton();
 
@@ -111,14 +109,8 @@ public class Menu extends JPanel {
     }
 
     private void initMenu() {
-        split("Explore");
-        addMenuItem("Home", SVGIcon.HOME, 1);
-        addMenuItem("Collection", SVGIcon.COLLECTION, 2);
         split("Online");
-        addMenuItem("Play Quiz", SVGIcon.QUIZ_GAME, 4);
-        split("Offline");
-        addMenuItem("Practice", SVGIcon.LEARNING, 6);
-        addMenuItem("Flashcard", SVGIcon.QUIZ_GAME, 7);
+        addMenuItem("Quiz", SVGIcon.QUIZ_GAME, 1);
         this.add(menu_panel);
     }
 

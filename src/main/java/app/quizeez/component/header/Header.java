@@ -6,6 +6,7 @@ import app.quizeez.main.Application;
 import app.quizeez.material.button.SwitchButton;
 import app.quizeez.system.Colors;
 import app.quizeez.system.SVGIcon;
+import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
 import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
@@ -16,7 +17,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 
@@ -45,15 +45,18 @@ public class Header extends JPanel {
         profilePane.setOpaque(false);
         profilePane.setLayout(profileLayout);
 
-        createSwitchButton(false);
+        createSwitchButton();
         crateLoginButton();
         this.add(profilePane);
     }
 
-    private void createSwitchButton(boolean selected) {
+    private void createSwitchButton() {
         SwitchButton switchButton = new SwitchButton();
-
-        switchButton.setSelected(selected, false);
+        if (FlatLaf.isLafDark()) {
+            switchButton.setSelected(true, true);
+        } else {
+            switchButton.setSelected(false, true);
+        }
         switchButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         switchButton.setBorder(new EmptyBorder(5, 0, 0, 0));
         switchButton.addEventToggleSelected(new SwitchAdapter() {
@@ -96,7 +99,7 @@ public class Header extends JPanel {
                 if (SwingUtilities.isLeftMouseButton(e)
                         && e.getClickCount() == 1) {
                     SwingUtilities.invokeLater(() -> {
-                        Application.getDashBoard().setVisible(false);
+                        Application.getInstance().setVisible(false);
                         new Login().setVisible(true);
                     });
                 }
@@ -105,9 +108,9 @@ public class Header extends JPanel {
         profilePane.add(loginBtn);
     }
 
-    public void resetProfile(boolean darkMode) {
+    public void resetProfile() {
         profilePane.removeAll();
-        createSwitchButton(darkMode);
+        createSwitchButton();
         createLogoutButton();
     }
 

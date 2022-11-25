@@ -1,5 +1,6 @@
 package app.quizeez.dialog.verify;
 
+import app.quizeez.material.field.TextInput;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
@@ -69,21 +70,29 @@ public class Input extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textInput1 = new app.quizeez.dialog.verify.TextInput();
-        textInput2 = new app.quizeez.dialog.verify.TextInput();
-        textInput3 = new app.quizeez.dialog.verify.TextInput();
-        textInput4 = new app.quizeez.dialog.verify.TextInput();
+        textInput1 = new app.quizeez.material.field.TextInput();
+        textInput2 = new app.quizeez.material.field.TextInput();
+        textInput3 = new app.quizeez.material.field.TextInput();
+        textInput4 = new app.quizeez.material.field.TextInput();
 
         textInput1.setBackground(new java.awt.Color(204, 255, 204));
+        textInput1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textInput1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         textInput1.setRoundRect(true);
 
         textInput2.setBackground(new java.awt.Color(204, 255, 204));
+        textInput2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textInput2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         textInput2.setRoundRect(true);
 
         textInput3.setBackground(new java.awt.Color(204, 255, 204));
+        textInput3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textInput3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         textInput3.setRoundRect(true);
 
         textInput4.setBackground(new java.awt.Color(204, 255, 204));
+        textInput4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textInput4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         textInput4.setRoundRect(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -115,9 +124,9 @@ public class Input extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private app.quizeez.dialog.verify.TextInput textInput1;
-    private app.quizeez.dialog.verify.TextInput textInput2;
-    private app.quizeez.dialog.verify.TextInput textInput3;
-    private app.quizeez.dialog.verify.TextInput textInput4;
+    private app.quizeez.material.field.TextInput textInput1;
+    private app.quizeez.material.field.TextInput textInput2;
+    private app.quizeez.material.field.TextInput textInput3;
+    private app.quizeez.material.field.TextInput textInput4;
     // End of variables declaration//GEN-END:variables
 }

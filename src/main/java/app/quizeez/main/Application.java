@@ -1,29 +1,30 @@
 package app.quizeez.main;
 
 import app.quizeez.gui.Dashboard;
-import com.groupdocs.conversion.internal.c.f.j.db.util.Converter;
-import com.groupdocs.foundation.domain.FileType;
+import app.quizeez.gui.SplashScreen;
+import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import javax.swing.SwingUtilities;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, URISyntaxException {
 
-//        FlatIntelliJLaf.setup();
-//
-//        dashBoard = new Dashboard(false);
-//        SwingUtilities.invokeLater(() -> {
-//            new SplashScreen(null, false).setVisible(true);
-//        });
-        
+        FlatCyanLightIJTheme.setup();
+        instance = new Dashboard(false);
+        SwingUtilities.invokeLater(() -> {
+            new SplashScreen(instance, false).setVisible(true);
+        });
     }
 
-    private static Dashboard dashBoard;
+    private static Dashboard instance;
 
-    public static Dashboard getDashBoard() {
-        return dashBoard;
+    public static Dashboard getInstance() {
+        return instance;
     }
 
-    public static void setDashboard(Dashboard d) {
-        dashBoard = d;
+    public static void setInstance(Dashboard ins) {
+        instance = ins;
     }
 }

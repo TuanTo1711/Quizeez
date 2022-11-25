@@ -133,7 +133,7 @@
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="app.quizeez.dialog.verify.TextInput" name="resendOTP">
+        <Component class="app.quizeez.material.field.TextInput" name="resendOTP">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

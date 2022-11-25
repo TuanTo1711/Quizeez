@@ -45,34 +45,50 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="app.quizeez.dialog.verify.TextInput" name="textInput1">
+    <Component class="app.quizeez.material.field.TextInput" name="textInput1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="cc" type="rgb"/>
         </Property>
-        <Property name="roundRect" type="boolean" value="true"/>
-      </Properties>
-    </Component>
-    <Component class="app.quizeez.dialog.verify.TextInput" name="textInput2">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="ff" red="cc" type="rgb"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
         </Property>
         <Property name="roundRect" type="boolean" value="true"/>
       </Properties>
     </Component>
-    <Component class="app.quizeez.dialog.verify.TextInput" name="textInput3">
+    <Component class="app.quizeez.material.field.TextInput" name="textInput2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="cc" type="rgb"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
         <Property name="roundRect" type="boolean" value="true"/>
       </Properties>
     </Component>
-    <Component class="app.quizeez.dialog.verify.TextInput" name="textInput4">
+    <Component class="app.quizeez.material.field.TextInput" name="textInput3">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="cc" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="roundRect" type="boolean" value="true"/>
+      </Properties>
+    </Component>
+    <Component class="app.quizeez.material.field.TextInput" name="textInput4">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="ff" red="cc" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
         </Property>
         <Property name="roundRect" type="boolean" value="true"/>
       </Properties>

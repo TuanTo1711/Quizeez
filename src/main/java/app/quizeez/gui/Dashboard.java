@@ -1,12 +1,10 @@
 package app.quizeez.gui;
 
-import app.quizeez.component.form.PlayOnline;
 import app.quizeez.component.menu.Menu;
 import app.quizeez.component.titlebar.TitleBar;
 import app.quizeez.component.header.Header;
-import app.quizeez.modal.Account;
+import app.quizeez.controller.ComponentResizer;
 import app.quizeez.material.panel.RoundedPanel;
-import app.quizeez.system.SVGIcon;
 import app.quizeez.view.page.Home;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -58,14 +56,21 @@ public class Dashboard extends JFrame {
     }
 
     private void reset() {
-        header.resetProfile(false);
+        header.resetProfile();
         // change profile and popup header menu
     }
 
     private void init() {
+//        ComponentResizer resizer = new ComponentResizer();
+//        resizer.registerComponent(this);
+//
+//        resizer.setSnapSize(new Dimension(10, 10));
+//        resizer.setMaximumSize(new Dimension(fullscreen));
+//        resizer.setMinimumSize(new Dimension(minimized));
+
         this.setOpacity(0.0f);
-        this.setBackground(new Color(0, 0, 0, 0));
-        this.setLocationRelativeTo(null);
+        this.setBackground(new Color(0, 0, 0, 0f));
+        this.setLocationRelativeTo(this);
         this.makeAnimation();
 
         roundedBackground.setLayout(miglayout);
@@ -125,6 +130,7 @@ public class Dashboard extends JFrame {
         roundedBackground = new app.quizeez.material.panel.RoundedPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(minimized);
         setUndecorated(true);
 
@@ -205,6 +211,7 @@ public class Dashboard extends JFrame {
         main.removeAll();
         main.add(header, BorderLayout.NORTH);
         main.add(form, BorderLayout.CENTER);
+        revalidate();
     }
 
     @Override

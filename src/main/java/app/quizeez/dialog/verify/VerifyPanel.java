@@ -64,7 +64,7 @@ public class VerifyPanel extends JPanel {
         cmdCancel = new app.quizeez.material.button.RoundedButton();
         cmdOK = new app.quizeez.material.button.RoundedButton();
         input = new app.quizeez.dialog.verify.Input();
-        resendOTP = new app.quizeez.dialog.verify.TextInput();
+        resendOTP = new app.quizeez.material.field.TextInput();
 
         roundedPanel1.setBackground(new java.awt.Color(255, 255, 255));
         roundedPanel1.setCorner(20);
@@ -194,7 +194,7 @@ public class VerifyPanel extends JPanel {
     private app.quizeez.dialog.verify.Input input;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private app.quizeez.dialog.verify.TextInput resendOTP;
+    private app.quizeez.material.field.TextInput resendOTP;
     private app.quizeez.material.panel.RoundedPanel roundedPanel1;
     // End of variables declaration//GEN-END:variables
 }

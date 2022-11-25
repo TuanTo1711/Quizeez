@@ -10,7 +10,7 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class SlideShow extends JLayeredPane {
+public final class SlideShow extends JLayeredPane {
 
     private JPanel panel;
     private final Pagination pagination;
@@ -29,7 +29,7 @@ public class SlideShow extends JLayeredPane {
         panel = new JPanel();
         pagination = new Pagination();
         makeAnimation();
-        setTimer();
+        setTimer(3000);
         pagination.setEventPagination((int pageClick) -> {
             if (!animator.isRunning()) {
                 if (pageClick != currentIndex) {
@@ -58,8 +58,8 @@ public class SlideShow extends JLayeredPane {
 
     }
 
-    private void setTimer() {
-        timer = new Timer(3000, (ActionEvent ae) -> {
+    public void setTimer(int delay) {
+        timer = new Timer(delay, (ActionEvent ae) -> {
             next();
         });
     }
@@ -104,35 +104,19 @@ public class SlideShow extends JLayeredPane {
     }
 
     private int getNext(int index) {
-        if (index == panel.getComponentCount() - 1) {
-            return 0;
-        } else {
-            return index + 1;
-        }
+        return index == panel.getComponentCount() - 1 ? 0 : index + 1;
     }
 
     private int checkNext(int index) {
-        if (index == -1) {
-            return panel.getComponentCount() - 1;
-        } else {
-            return index;
-        }
+        return index == -1 ? panel.getComponentCount() - 1 : index;
     }
 
     private int getBack(int index) {
-        if (index == 0) {
-            return panel.getComponentCount() - 1;
-        } else {
-            return index - 1;
-        }
+        return index == 0 ? panel.getComponentCount() - 1 : index - 1;
     }
 
     private int checkBack(int index) {
-        if (index == panel.getComponentCount()) {
-            return 0;
-        } else {
-            return index;
-        }
+        return index == panel.getComponentCount() ? 0 : index;
     }
 
     private void makeAnimation() {

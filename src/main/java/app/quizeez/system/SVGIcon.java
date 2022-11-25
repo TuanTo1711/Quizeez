@@ -24,9 +24,10 @@ public class SVGIcon {
     public static final FlatSVGIcon COLLECTION = new FlatSVGIcon("svg/collection.svg", 20, 20);
     public static final FlatSVGIcon PROFILE = new FlatSVGIcon("svg/profile.svg", 20, 20);
     public static final FlatSVGIcon QUIZ_GAME = new FlatSVGIcon("svg/quiz-game.svg", 20, 20);
-    public static final FlatSVGIcon NEW = new FlatSVGIcon("svg/new.svg", 20, 20);
-    public static final FlatSVGIcon JOIN = new FlatSVGIcon("svg/join.svg", 20, 20);
     public static final FlatSVGIcon LEARNING = new FlatSVGIcon("svg/learning.svg", 20, 20);
+
+    public static final FlatSVGIcon NEW = new FlatSVGIcon("svg/new.svg", 15, 15);
+    public static final FlatSVGIcon JOIN = new FlatSVGIcon("svg/join.svg", 15, 15);
 
     public static final FlatSVGIcon CALENDAR = new FlatSVGIcon("svg/calendar-item_menu.svg", 20, 20);
     public static final FlatSVGIcon EVENT = new FlatSVGIcon("svg/event-item_menu.svg", 20, 20);
@@ -34,9 +35,8 @@ public class SVGIcon {
     public static final FlatSVGIcon CHEVRON_RIGHT = new FlatSVGIcon("svg/chevron_right-profile_bottom.svg", 20, 20);
 
     public static final FlatSVGIcon MAGNIFIER_SEARCH = new FlatSVGIcon("svg/magnifier-search_input.svg", 15, 15);
-    public static final FlatSVGIcon PREVIOUS = new FlatSVGIcon("svg/previous-page.svg", 17, 17);
-    public static final FlatSVGIcon REFRESH = new FlatSVGIcon("svg/refresh-page.svg", 17, 17);
-    public static final FlatSVGIcon NEXT = new FlatSVGIcon("svg/next-page.svg", 17, 17);
+    public static final FlatSVGIcon PREVIOUS = new FlatSVGIcon("svg/previous-page.svg", 20, 20);
+    public static final FlatSVGIcon NEXT = new FlatSVGIcon("svg/next-page.svg", 20, 20);
 
     public static final FlatSVGIcon MOON = new FlatSVGIcon("svg/moon.svg", 20, 20);
     public static final FlatSVGIcon SUN = new FlatSVGIcon("svg/sun.svg", 20, 20);
