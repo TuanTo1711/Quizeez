@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.quizeez</groupId>
-    <artifactId>Quizeez</artifactId>
+    <groupId>app.quizbee</groupId>
+    <artifactId>QuizBee</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <exec.mainClass>app.quizeez.main.Application</exec.mainClass>
+        <exec.mainClass>app.quizbee.main.Application</exec.mainClass>
     </properties>
   
     <dependencies>
@@ -26,7 +26,7 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.3</version>
         </dependency>
-
+        
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -34,12 +34,12 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+        
+        <!-- https://mvnrepository.com/artifact/io.socket/socket.io-client -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-email</artifactId>
-            <version>1.5</version>
+            <groupId>io.socket</groupId>
+            <artifactId>socket.io-client</artifactId>
+            <version>1.0.1</version>
         </dependency>
         
         <dependency>
@@ -84,39 +84,15 @@
             <version>2.6</version>
         </dependency>
         
-        <!--        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.5.2</version>
-            <scope>test</scope>
-        </dependency>
-        
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.2</version>
-            <scope>test</scope>
-            <type>jar</type>
-        </dependency>-->
-        
-        <!-- https://mvnrepository.com/artifact/io.socket/socket.io-client -->
-        <dependency>
-            <groupId>io.socket</groupId>
-            <artifactId>socket.io-client</artifactId>
-            <version>2.1.0</version>
-        </dependency>
-        
-        <!-- https://mvnrepository.com/artifact/jakarta.mail/jakarta.mail-api -->
-        <dependency>
-            <groupId>jakarta.mail</groupId>
-            <artifactId>jakarta.mail-api</artifactId>
-            <version>2.1.0</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.11.2</version>
         </dependency>
     </dependencies>
     
     <build>
-        
-        <finalName>Bee Quiz</finalName>
+        <finalName>QuizzBee</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -153,7 +129,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>app.quizeez.main.Application</mainClass>
+                            <mainClass>app.quizbee.main.Application</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
