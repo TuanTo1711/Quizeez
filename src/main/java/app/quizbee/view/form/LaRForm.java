@@ -57,10 +57,6 @@ public class LaRForm extends JLayeredPane {
         login.getLoginButton().addActionListener(act);
     }
 
-    public void addForgetEvent(ActionListener act) {
-        login.getForgetPasswordButton().addActionListener(act);
-    }
-
     public void addRegisterEvent(ActionListener act) {
         register.getRegisterButton().addActionListener(act);
     }

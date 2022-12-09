@@ -30,13 +30,14 @@ public class VerifyPanel extends JPanel {
             resendButton.setFocusable(false);
             resendButton.setEnabled(false);
             new Thread(() -> {
-                int sec = 10;
+                int sec = 30;
                 do {
                     resendButton.setText(sec-- + "s");
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {
-                        Logger.getLogger(VerifyPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(VerifyPanel.class.getName())
+                                .log(Level.SEVERE, null, ex);
                     }
                     if (resendButton.getText().equalsIgnoreCase("0s")) {
                         resendButton.setText("Send");
@@ -158,6 +159,10 @@ public class VerifyPanel extends JPanel {
         setVisible(false);
     }//GEN-LAST:event_cmdCancelActionPerformed
 
+    public void addResendMail (ActionListener act) {
+        resendButton.addActionListener(act);
+    }
+    
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;

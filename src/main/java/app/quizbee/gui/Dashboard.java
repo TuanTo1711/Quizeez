@@ -9,7 +9,10 @@ import app.quizbee.dialog.message.Message;
 import app.quizbee.main.Application;
 import app.quizbee.material.panel.RoundedPanel;
 import app.quizbee.modal.LoginModal;
+import app.quizbee.view.page.Flashcard;
 import app.quizbee.view.page.Home;
+import app.quizbee.view.page.Profile;
+import app.quizbee.view.page.Setting;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -18,6 +21,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import net.miginfocom.swing.MigLayout;
@@ -28,6 +32,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 public class Dashboard extends JFrame {
 
     private final Client client = Application.getClient();
+    private final Map<Integer, Component> pages;
 
     private final Dimension minimized = new Dimension(1080, 720);
     private final Dimension fullscreen
@@ -42,10 +47,22 @@ public class Dashboard extends JFrame {
     private boolean menuShow = true;
 
     private final Home home;
+    private final Flashcard flashcard;
+    private final Profile profile;
+    private final Setting setting;
 
     public Dashboard() {
         initComponents();
         home = new Home();
+        flashcard = new Flashcard();
+        profile = new Profile();
+        setting = new Setting();
+
+        pages = Map.of(1, home,
+                3, flashcard,
+                5, profile,
+                6, setting);
+
         titleBar = new TitleBar();
         menu = new Menu();
         header = new Header();
@@ -102,7 +119,7 @@ public class Dashboard extends JFrame {
         titleBar.initEvent(this, roundedBackground);
 
         menu.addEventMenu((int index) -> {
-//            showPage(map.get(index));
+            showPage(pages.get(index));
         });
 
         menu.setShowingAction((ActionEvent e) -> {
@@ -256,7 +273,9 @@ public class Dashboard extends JFrame {
         main.removeAll();
         main.add(header, BorderLayout.NORTH);
         main.add(form, BorderLayout.CENTER);
+        roundedBackground.revalidate();
         main.revalidate();
+        main.repaint();
     }
 
     public Client getClient() {

@@ -21,11 +21,9 @@ public class SVGIcon {
     public static final FlatSVGIcon LOGOUT = new FlatSVGIcon("svg/logout.svg", 40, 40);
 
     public static final FlatSVGIcon HOME = new FlatSVGIcon("svg/home-item_menu.svg", 20, 20);
-    public static final FlatSVGIcon NEWANDNOTE = new FlatSVGIcon("svg/new-item_menu.svg", 20, 20);
     public static final FlatSVGIcon COLLECTION = new FlatSVGIcon("svg/collection.svg", 20, 20);
-    public static final FlatSVGIcon PROFILE = new FlatSVGIcon("svg/profile.svg", 20, 20);
     public static final FlatSVGIcon QUIZ_GAME = new FlatSVGIcon("svg/quiz-game.svg", 20, 20);
-    public static final FlatSVGIcon LEARNING = new FlatSVGIcon("svg/learning.svg", 20, 20);
+    public static final FlatSVGIcon FLASHCARD = new FlatSVGIcon("svg/flashcard.svg", 20, 20);
     public static final FlatSVGIcon USER_PROFILE = new FlatSVGIcon("svg/user-profile.svg", 20, 20);
     public static final FlatSVGIcon SETTING = new FlatSVGIcon("svg/setting.svg", 20, 20);
 

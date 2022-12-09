@@ -248,18 +248,14 @@ public class Menu extends JPanel {
         menu_panel.removeAll();
         menu_panel.revalidate();
         menu_panel.repaint();
-        split("Explore");
-        addMenuItem("Profile", SVGIcon.USER_PROFILE, 2);
-        addMenuItem("Quiz", SVGIcon.QUIZ_GAME, 3);
-
+        
         split("Online");
-        addMenuItem("Quiz", SVGIcon.QUIZ_GAME, 5);
-
+        addMenuItem("Quiz", SVGIcon.QUIZ_GAME, 1);
         split("Offline");
-        addMenuItem("Quiz", SVGIcon.QUIZ_GAME, 7);
+        addMenuItem("Flashcard", SVGIcon.FLASHCARD, 3);
         split("Other");
-        addMenuItem("About Us", SVGIcon.QUIZ_GAME, 9);
-        addMenuItem("Setting", SVGIcon.SETTING, 10);
+        addMenuItem("Profile", SVGIcon.USER_PROFILE, 5);
+        addMenuItem("Setting", SVGIcon.SETTING, 6);
     }
 
     private class HomeButton extends JButton {

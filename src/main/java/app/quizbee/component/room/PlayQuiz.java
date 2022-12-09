@@ -135,7 +135,7 @@ public class PlayQuiz extends JPanel {
     private void updateScore(int score) {
         totalScore += score;
         lblScore.setText("Score: " + totalScore);
-        sm.setScore(score);
+        sm.setScore(totalScore);
         Application.getClient().getService().updateScore(sm);
     }
 

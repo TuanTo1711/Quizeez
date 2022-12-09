@@ -1,5 +1,8 @@
 package app.quizbee.view.page;
 
-public class Profile {
+public class Profile extends Page {
 
+    public Profile() {
+        super();
+    }    
 }

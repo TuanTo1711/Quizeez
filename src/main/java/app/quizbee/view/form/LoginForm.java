@@ -24,7 +24,7 @@ public class LoginForm extends JPanel {
     private TextField usernameField;
     private PasswordField passwordField;
     private FlatCheckBox rememberButton;
-    private FlatButton loginButton, forgetPasswordButton;
+    private FlatButton loginButton;
 
     public LoginForm() {
         init();
@@ -51,25 +51,13 @@ public class LoginForm extends JPanel {
         rememberButton.setText("Remember?");
         rememberButton.setForeground(Color.white);
 
-        forgetPasswordButton = new FlatButton();
-        forgetPasswordButton.setForeground(Color.white);
-        forgetPasswordButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        forgetPasswordButton.setIcon(new FlatHelpButtonIcon());
-        forgetPasswordButton.setContentAreaFilled(false);
-        forgetPasswordButton.setOpaque(false);
-        forgetPasswordButton.setHorizontalAlignment(JButton.LEFT);
-        forgetPasswordButton.setText("Forget password?");
-
         loginButton = createButtonAction("SIGN IN");
 
         this.add(title, "gapbottom 40px");
         this.add(usernameField, "w 300!, h 55!");
         this.add(passwordField, "w 300!, h 55!");
-        this.add(forgetPasswordButton,
-                "split, w 200!, h 35!, left");
-        this.add(rememberButton, "wrap, w 100!, r");
-        this.add(loginButton,
-                "gaptop 30px, w 150!, h 35!");
+        this.add(rememberButton, "w 100!, r");
+        this.add(loginButton, "gaptop 30px, w 150!, h 35!");
     }
 
     public boolean valid() {
@@ -116,9 +104,5 @@ public class LoginForm extends JPanel {
 
     public FlatButton getLoginButton() {
         return loginButton;
-    }
-
-    public FlatButton getForgetPasswordButton() {
-        return forgetPasswordButton;
     }
 }

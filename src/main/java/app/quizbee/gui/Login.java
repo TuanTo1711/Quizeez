@@ -84,7 +84,7 @@ public class Login extends JFrame {
         bg.add(loading, "pos 0 0 100% 100%");
         bg.add(verifyCode, "pos 0 0 100% 100%");
         bg.add(cover, "width " + coverSize + "%, pos 0al 0 n 100%");
-        bg.add(loginAndRegister, "width " + loginSize + "%, pos 1al 0 n 100%"); //  1al as 100%
+        bg.add(loginAndRegister, "width " + loginSize + "%, pos 1al 0 n 100%");
     }
 
     private void initEvent() {
@@ -118,7 +118,6 @@ public class Login extends JFrame {
 
         verifyCode.addEventButtonOK((ae) -> {
             RegisterModal rModal = loginAndRegister.getRegisterModal();
-
             if (verifyCode.getInputCode()
                     .equalsIgnoreCase(rModal.getCode())) {
                 rModal.getUser().setStatus("Verified");
@@ -134,6 +133,11 @@ public class Login extends JFrame {
                         "Verify Code Incorrect!"));
                 verifyCode.resetInputCode();
             }
+        });
+
+        verifyCode.addResendMail((ActionEvent e) -> {
+            RegisterModal modal = loginAndRegister.getRegisterModal();
+            sendMail(modal);
         });
 
         loading.setVisible(false);

@@ -1,6 +1,5 @@
 app\quizbee\component\room\RankingRoom$ScoreView.class
 app\quizbee\component\header\Header$1.class
-app\quizbee\material\field\AutoWrapText.class
 app\quizbee\gui\LoadingScreen.class
 app\quizbee\component\header\Header.class
 app\quizbee\view\form\RegisterForm.class
@@ -45,7 +44,6 @@ app\quizbee\material\progress\ProgressCircleUI.class
 app\quizbee\component\menu\ButtonMenu.class
 app\quizbee\dialog\message\Background.class
 app\quizbee\component\room\PlayQuiz$1.class
-app\quizbee\component\room\RankingRoom$1.class
 app\quizbee\material\button\RoundedButton.class
 app\quizbee\dialog\message\Button.class
 app\quizbee\gui\LoadingScreen$1.class
@@ -54,7 +52,6 @@ app\quizbee\component\menu\ButtonMenu$2.class
 app\quizbee\dialog\verify\VerifyPanel$1.class
 app\quizbee\view\form\QuestionForm.class
 app\quizbee\controller\Validator.class
-app\quizbee\material\field\AutoWrapText$WarpLabelView.class
 app\quizbee\component\slideshow\Pagination.class
 app\quizbee\view\page\Home$1.class
 app\quizbee\client\Client$Service$1.class
@@ -72,6 +69,7 @@ app\quizbee\component\room\RankingRoom.class
 app\quizbee\material\field\TextField.class
 app\quizbee\component\titlebar\TitleBar$1.class
 app\quizbee\dialog\notification\Notification.class
+app\quizbee\client\Client$Service$7.class
 app\quizbee\view\page\Profile.class
 app\quizbee\gui\Login$2.class
 app\quizbee\view\page\Home.class
@@ -128,6 +126,7 @@ app\quizbee\material\scrollbar\ModernScrollBarUI$ScrollBarButton.class
 app\quizbee\event\SwitchListener.class
 app\quizbee\modal\RegisterModal.class
 app\quizbee\view\form\LaRForm$1.class
+app\quizbee\client\Client$Service$6$1.class
 app\quizbee\component\slideshow\SlideShow$1.class
 app\quizbee\dialog\message\Message.class
 app\quizbee\material\progress\ProgressCircle.class
@@ -139,7 +138,6 @@ app\quizbee\component\menu\MenuEvent.class
 app\quizbee\dialog\message\Message$MessageType.class
 app\quizbee\entity\Entity.class
 app\quizbee\material\button\SwitchButton$1.class
-app\quizbee\material\field\AutoWrapText$WarpColumnFactory.class
 app\quizbee\component\room\PlayQuiz.class
 app\quizbee\util\FileUtils$Word$WordExtension.class
 app\quizbee\view\page\Home$RoomCard.class
