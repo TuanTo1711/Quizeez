@@ -1,6 +1,5 @@
 package app.quizbee.component.room;
 
-import app.quizbee.event.CallbackData;
 import app.quizbee.main.Application;
 import app.quizbee.modal.PlayerModal;
 import app.quizbee.modal.ScoreModal;
@@ -13,19 +12,24 @@ import net.miginfocom.swing.MigLayout;
 
 public class RankingRoom extends JPanel {
 
-    private final MigLayout layout;
+    private MigLayout layout;
+
+    public RankingRoom() {
+        init();
+        autoUpdateScore();
+    }
 
     public RankingRoom(List<PlayerModal> lstPlayer) {
-        layout = new MigLayout("fillx, wrap, ttb",
-                "10[fill, c]10",
-                "10[fill, c]10");
-        fill(lstPlayer);
         init();
+        fill(lstPlayer);
+        autoUpdateScore();
     }
 
     private void init() {
+        layout = new MigLayout("fillx, wrap, ttb",
+                "10[fill, c]10",
+                "10[fill, c]10");
         this.setLayout(layout);
-        autoUpdateScore();
     }
 
     private void fill(List<PlayerModal> lst) {
@@ -71,7 +75,6 @@ public class RankingRoom extends JPanel {
 
         private ScoreView(PlayerModal pm, int top) {
             this.lblTop = new JLabel(top + 1 + "");
-//            checkTop(top);
             lblName = new JLabel(pm.getName());
             lblScore = new JLabel("0");
             initScoreView();

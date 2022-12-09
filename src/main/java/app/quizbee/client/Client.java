@@ -275,7 +275,6 @@ public class Client {
         @Override
         public void autoUpdateScore(CallbackData<List<ScoreModal>> callbackData) {
             clientIO.on("getTopScore", (Object... os) -> {
-                System.out.println(os[0].toString());
                 List<ScoreModal> qList = null;
                 try {
                     qList = new ObjectMapper().readValue(

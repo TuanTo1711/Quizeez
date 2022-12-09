@@ -59,8 +59,8 @@ public class PlayQuiz extends JPanel {
             qf.addFinishQuestion((ActionEvent e) -> {
                 updateScore(qf.getScore(timeCountDown.getValue()));
                 if (questionsForm.indexOf(qf) == questionsForm.size() - 1) {
-                    JOptionPane.showMessageDialog(this,
-                            "finish all question");
+                    RankingRoom rankingRoom = new RankingRoom();
+                    Application.getDashboard().showPage(rankingRoom);
                     return;
                 }
                 nextQuestion();

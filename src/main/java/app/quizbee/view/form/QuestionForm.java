@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -191,13 +190,15 @@ public class QuestionForm extends JPanel {
         if (Stream.of(values).allMatch(t -> t == false)) {
             return false;
         }
-        
+
         return mapSelection.entrySet().stream()
                 .allMatch(e -> e.getValue().equals(shuffleMap.get(e.getKey().getText())));
     }
 
     private void setSelected(FlatButton button) {
-        if (!mapSelection.get(button)) {
+        if (mapSelection.get(button)) {
+            button.setBackground(button.getBackground().brighter());
+        } else {
             button.setBackground(button.getBackground().darker());
         }
         mapSelection.replace(button, !mapSelection.get(button));
